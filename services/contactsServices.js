@@ -1,4 +1,4 @@
-const { fs } require "fs/promises";
+const fs =  require ("fs/promises");
 import { join } from "path";
 import { uid } from "uid";
 
@@ -50,7 +50,7 @@ async function addContact(name, email, phone) {
   return newContact;
 }
 
-export default {
+module.exports = {
   listContacts,
   getContactById,
   removeContact,
