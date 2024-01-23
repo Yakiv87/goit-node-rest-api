@@ -1,13 +1,13 @@
-const fs = require("fs/promises");
-const path = require("path");
-const { uid } = require("uid");
+const { fs } require "fs/promises";
+import { join } from "path";
+import { uid } from "uid";
 
-const contactsPath = path.join(__dirname, "./db/contact.json");
+const contactsPath = join(__dirname, "./db/contact.json");
 const updateContacts = async (contacts) =>
-  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+  await writeFile(contactsPath, JSON.stringify(contacts, null, 2));
 
 async function listContacts() {
-  const contacts = await fs.readFile(contactsPath, "utf-8");
+  const contacts = await readFile(contactsPath, "utf-8");
   return JSON.parse(contacts);
 }
 
@@ -50,7 +50,7 @@ async function addContact(name, email, phone) {
   return newContact;
 }
 
-module.exports = {
+export default {
   listContacts,
   getContactById,
   removeContact,
