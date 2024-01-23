@@ -1,11 +1,50 @@
-import contactsService from "../services/contactsServices.js";
+const contactsMethods = require("../models/contacts");
+const { HttpError, contactsCtrlWrapper } = require("../helpers");
 
-export const getAllContacts = (req, res) => {};
+const getAllContacts = async (req, res) => {
+  const result = await contactsMethods.listContacts();
+  res.json(result);
+};
 
-export const getOneContact = (req, res) => {};
+const getContactById = async (req, res) => {
+  const { contactId } = req.params;
+  const result = await contactsMethods.getContactById(contactId);
+  if (!result) throw HttpError(404, "Not found");
+  res.json(result);
+};
 
-export const deleteContact = (req, res) => {};
+const addContact = async (req, res) => {
+  const result = await contactsMethods.addContact(req.body);
 
-export const createContact = (req, res) => {};
+  if (!result) throw HttpError(404, "Bad request");
 
-export const updateContact = (req, res) => {};
+  res.status(201).json(result);
+};
+
+const deleteContact = async (req, res) => {
+  const { contactId } = req.params;
+
+  const result = await contactsMethods.removeContact(contactId);
+
+  if (!result) throw HttpError(404, "Not found");
+
+  res.status(200).json("Contact deleted");
+};
+
+const updateContact = async (req, res) => {
+  const { contactId } = req.params;
+
+  const result = await contactsMethods.updateContact(contactId, req.body);
+
+  if (!result) throw HttpError(404, "Not found");
+
+  res.status(200).json(result);
+};
+
+module.exports = {
+  getAllContacts: contactsCtrlWrapper(getAllContacts),
+  getContactById: contactsCtrlWrapper(getContactById),
+  addContact: contactsCtrlWrapper(addContact),
+  deleteContact: contactsCtrlWrapper(deleteContact),
+  updateContact: contactsCtrlWrapper(updateContact),
+};
