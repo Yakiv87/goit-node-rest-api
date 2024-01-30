@@ -20,7 +20,7 @@ export const getAllContacts = async (_, res) => {
   }
 };
 
-export const getOneContact = async (req, res) => {
+export const getContactById = async (req, res) => {
   try {
     const { id } = req.params;
     const contact = await contactsService.getContactById(id);

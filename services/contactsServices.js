@@ -60,7 +60,7 @@ const updateContact = async (contactId, body) => {
   return newContacts.find(({ id }) => id === contactId);
 };
 
-export {
+export default {
   listContacts,
   getContactById,
   removeContact,
