@@ -1,19 +1,28 @@
 {
-    "name": "goit-node-rest-api",
-    
-       "scripts": {
-        "start": "node ./app.js",
-        "dev": "nodemon ./app.js"
-    },
-        "dependencies": {
-        "cors": "^2.8.5",
-        "express": "^4.18.2",
-        "joi": "^17.12.0",
-        "join": "^3.0.0",
-        "morgan": "^1.10.0",
-        "uid": "^2.0.2"
-    },
-    "devDependencies": {
-        "nodemon": "^3.0.3"
-    }
+  "name": "goit-node-hw-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oleksandr220/goit-node-hw-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oleksandr220/goit-node-hw-1/issues"
+  },
+  "homepage": "https://github.com/Oleksandr220/goit-node-hw-1#readme",
+  "dependencies": {
+    "nanoid": "^3.1.30"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14",
+    "yargs": "^17.2.1"
+  }
 }

@@ -1,6 +1,6 @@
-const { HttpError } = require("../helpers/HttpError");
+import HttpError from './HttpError.js';
 
-const validateContactBody = (schema) => {
+const validateBody = (schema) => {
   const func = (req, _, next) => {
     const { error } = schema.validate(req.body);
     if (error) {
@@ -12,4 +12,4 @@ const validateContactBody = (schema) => {
   return func;
 };
 
-module.exports = validateContactBody;
+export default validateBody;
